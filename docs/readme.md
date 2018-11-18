@@ -1,4 +1,4 @@
-# Hoofdstuk 8 MVC - Oefening: Beerhall
+# Hoofdstuk 8 MVC - Oefening: Sportstore
 
 ## De Oplossing:
 ### Product Overzicht
