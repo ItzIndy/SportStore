@@ -31,7 +31,7 @@ De applicatie is een ASP.NET Web Application gebaseerd op een MVC template. De D
 ### Repository Pattern
 #### ProductRepository
 - In de Domain-laag definieer je de Interface `IProductRepository`: bevat de CRUD operaties (ophalen alle producten, ophalen van 1 product o.b.v. id, toevoegen en verwijderen van een product, persisteren van de wijzigingen)
-- In de Data-laag maak je in een folder `Repositories` een concrete klasse `ProductRepository` aan die gebruik maakt van de `ApplicationDbContext` en deze interface implementeert.
+- In de Data-laag maak je in een folder `Repositories` een concrete klasse `ProductRepository` aan die gebruik maakt van de `ApplicationDbContext` en `IProductRepository` implementeert.
 - Configureer de dependency injection in `Startup.cs`, de interface  `IProductRepository` wordt per request automatisch geresolved door een `ProductRepository`.
 
 #### CategoryRepository
