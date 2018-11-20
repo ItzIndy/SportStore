@@ -36,8 +36,8 @@ De applicatie is een ASP.NET Web Application gebaseerd op een MVC template. De D
 
 #### CategoryRepository
 - In de Domain-laag definieer je de Interface `ICategoryRepository`
-bevat methodes voor het opvragen van alle categoriën en 1 categorie o.b.v. id. 
-- In de Data-laag maak je in een folder `Repositories` een concrete klasse `CategoryRepository` aan die gebruik maakt van de `ApplicationDbContext` en deze interface implementeert. 
+bevat methodes voor het opvragen van alle categoriën en 1 categorie o.b.v. de `categorieid`. 
+- In de Data-laag maak je in een folder `Repositories` een concrete klasse `CategoryRepository` aan die gebruik maakt van de `ApplicationDbContext` en de `ICategoryRepository` interface implementeert. 
 - Configureer de dependency injection in `Startup.cs`, de interface  `ICategoryRepository` wordt per request automatisch geresolved door een `CategoryRepository`.
 
  
