@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SportsStore.Data;
+using SportsStore.Data.Repositories;
+using SportsStore.Models.Domain;
 
 namespace SportsStore {
     public class Startup {
@@ -25,7 +27,13 @@ namespace SportsStore {
             services.AddDbContext<ApplicationDbContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //ApplicationDbContext wordt altijd impliciet AddScoped toegevoed,
+            //Dus al de rest die hiervan gebruik maakt wordt ook AddScopes toegevoegd.
+
+
             services.AddScoped<SportsStoreDataInitializer>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             services.Configure<CookiePolicyOptions>(options => {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -49,11 +57,11 @@ namespace SportsStore {
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Product}/{action=Index}/{id?}");
             });
 
             sportsStoreDataInitializer.InitializeData();
