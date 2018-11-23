@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SportsStore.Models.ProductViewModel;
+using System;
 using System.Runtime.CompilerServices;
 
 // Make SportsStore.tests a friendly assembly so it can access the internal properties of this class
@@ -69,5 +70,13 @@ namespace SportsStore.Models.Domain {
             return HashCode.Combine(ProductId);
         }
         #endregion
+
+       public void MapEditViewToProduct(string name, string description, decimal price, bool instock, Category cat) {
+            this.Name = name;
+            this.Category = cat;
+            this.Description = description;
+            this.Price = price;
+            this.InStock = instock;
+        }
     }
 }
